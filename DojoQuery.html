@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DojoQuery</title>
+	<style>
+		body{
+			text-align: center;
+			padding-top: 300px;
+			background-color: purple;
+		}
+		
+		button {
+			padding:20px 40px;
+			border-radius: 10px;
+			color:white;
+			font-size: 16px;
+			cursor:pointer;
+			font-family: sans-serif;
+		}
+
+		#id1 {
+			background-color: green;
+		}
+
+		#id2 {
+			background-color: blue;
+		}
+	</style>
+
+</head>
+<body>
+	<button id="id1">Button 1</button>
+	<button id="id2">Button 2</button>
+	<script>
+		var $Dojo = function(elementId){
+			var element = document.getElementById(elementId);
+			return{
+				element: element,
+				click: function(callback){
+					element.addEventListener('click',callback);
+				},
+
+				hover: function(callbackIn, callbackOut){
+					element.addEventListener('mouseover',callbackIn);
+					element.addEventListener('mouseout',callbackOut);
+				}
+			};
+		};
+		$Dojo('id1').click( function(){console.log('clicked 1!');} );
+		$Dojo('id2').click( function(){console.log('clicked 2!');} );
+		$Dojo('id2').hover( function(){console.log('hover IN!');}, function(){console.log('hover OUT!')} );
+	</script>
+
+</body>
+</html>
